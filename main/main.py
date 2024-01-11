@@ -1,16 +1,16 @@
 import pygame
-import object.player as player
+import object.functions as play
 import menu.mainmenu as menu
+import static
 
 pygame.init()
 
-SCR_WITDH=800
-SCR_HEIGT=400
 game = False
-control=0
+control = 0
+cords = [0, 0, 10, 0]
 
 pygame.display.set_caption('Shroom Collector')
-screen = pygame.display.set_mode((SCR_WITDH, SCR_HEIGT))
+screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
 
 run = True
 while run:
@@ -18,21 +18,33 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
             run = False
-        if game==True:
-            if key[pygame.K_SPACE]:
-                player.move(screen,120, 120)
+        if game:
+            if key[pygame.K_LEFT]:
+                control = 1
+            elif key[pygame.K_RIGHT]:
+                control = 2
+            elif key[pygame.K_DOWN]:
+                control = 0
         else:
             if key[pygame.K_DOWN]:
-                control+=1
-                control=menu.indicator(screen, control)
+                control += 1
+                control = menu.menu(screen, control)
             elif key[pygame.K_UP]:
-                control-=1
-                control=menu.indicator(screen, control)
+                control -= 1
+                control = menu.menu(screen, control)
             elif key[pygame.K_SPACE]:
-                if control==0: game=True
-                elif control==1: menu.how(screen)
-
-            menu.menu(screen)
-            menu.indicator(screen, control)
-        pygame.display.update()
+                if control == 0:
+                    game = True
+                elif control == 1:
+                    menu.how(screen)
+                elif control == 2:
+                    ranking = 1
+                else:
+                    run = False
+            menu.menu(screen, control)
+    if game:
+        cords = play.move(screen, cords[0], cords[1], cords[2], cords[3], control)
+        if cords[2] == 0:
+            game = play.lost(game)
+    pygame.display.update()
 pygame.quit()
