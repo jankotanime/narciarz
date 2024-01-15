@@ -2,23 +2,31 @@ import pygame
 import random
 
 
-def forest(screen, y):
+def forest(screen, y, f_tab):
     grove = pygame.image.load("../img/objects/forest.png")
-    screen.blit(grove, (200, y + 600))
-
+    for i in range(3):
+        print(f_tab[i])
+        if f_tab[i] != 0:
+            screen.blit(grove, (400*i, 1800-y))
+    return f_tab
 
 
 def randomise_forest():
-    forests = []
-    amount = random.randint(1,3)
-    fun_long = 0
-    for i in range(amount):
-        forests.append([])
-        type = random.randint(1, 4)
-        long = random.randint(0, 4)
-        forests[i].append(type)
-        forests[i].append(long)
-        if forests[i][1] > fun_long:
-            fun_long = forests[i][1]
-    return forest, fun_long
+    side = random.randint(0,3)
+    if side == 0:
+        long = random.randint(1, 5)
+        return [0, long, 0], long
+    elif side == 1:
+        long = random.randint(1, 5)
+        return [long, 0, 0], long
+    elif side == 2:
+        long = random.randint(1, 5)
+        return [0, 0, random.randint(1, 5)], long
+    else:
+        left_long = random.randint(1,5)
+        right_long = random.randint(1,5)
+        if left_long >= right_long:
+            return [left_long, 0, right_long], left_long
+        else:
+            return [left_long, 0, right_long], right_long
 

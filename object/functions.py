@@ -7,28 +7,29 @@ def chart(screen, x, y):
     screen.blit(map, (0, 0 - y))
     map_top = pygame.image.load("../img/objects/map_top.png")
     screen.blit(map_top, (0, 1800 - y))
-    obstacles.forest(screen, 0 - y)
     player = pygame.image.load("../img/objects/player.png")
-    screen.blit(player, (560 + x, 80))
-    obstacles.forest(screen, y)
+    screen.blit(player, (570 + x, 80))
 
 
-def move(screen, x, y, n, forest_long, kier):
-    f_long = forest_long
+def move(screen, x, y, n, forest_long, f_var, kier):
+    chart(screen, x, y + n)
     if kier == 1:
         x -= n
     elif kier == 2:
         x += n
     if y%150 == 0:
         if forest_long == 0:
-            f_long = obstacles.randomise_forest()[1]
-            print(f_long)
+            f_tab = obstacles.randomise_forest()
+            f_var = f_tab[0]
+            forest_long = f_tab[1]
+            print(f_var)
+            print(f_tab)
         else:
-            f_long = forest_long - 1
-    chart(screen, x, y + n)
+            forest_long = forest_long - 1
+    f_var = obstacles.forest(screen, y, f_var)
     if y + n >= 1800:
-        return [x, 0, n+1, kier]
-    return [x, y + n, n, f_long, kier]
+        return [x, 0, n, forest_long, f_var, kier]
+    return [x, y + n, n, forest_long, f_var, kier]
 
 
 def lost(game):
