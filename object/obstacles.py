@@ -4,28 +4,31 @@ import random
 grove = pygame.image.load("../img/objects/forest.png")
 
 
-def forest(screen, y, f_tab, f_start):
-    for i in range(4):
-        if f_tab[i] != 0:
-            screen.blit(grove, (i * 400, (f_start - y)))
-    return
+def forest(screen, y, f_tab):
+    if f_tab['type'] == 1:
+        x = 0
+    elif f_tab['type'] == 2:
+        x = 400
+    elif f_tab['type'] == 3:
+        x = 800
+    else:
+        screen.blit(grove, (0, f_tab['start'] - y))
+        screen.blit(grove, (800, f_tab['start'] - y))
+        return -180, 180, f_tab['start'] - 80, f_tab['start'] + 720
+    screen.blit(grove, (x, f_tab['start'] - y))
+    return x-620, x-180, f_tab['start'] - 80, f_tab['start'] + 720
+
+
+def death_function(x, y, mig):
+    if mig['x1'] < x < mig['x2'] and mig['y1'] < y < mig['y2']:
+        return 1
+
+
+def death_border_function(x, y, mig):
+    if (mig['x1'] > x or x > mig['x2']) and mig['y1'] < y < mig['y2']:
+        return 1
 
 
 def randomise_forest():
-    side = random.randint(0, 3)
-    if side == 0:
-        long = random.randint(1, 5)
-        return [0, long, 0], long
-    elif side == 1:
-        long = random.randint(1, 5)
-        return [long, 0, 0], long
-    elif side == 2:
-        long = random.randint(1, 5)
-        return [0, 0, long], long
-    else:
-        left_long = random.randint(1, 5)
-        right_long = random.randint(1, 5)
-        if left_long >= right_long:
-            return [left_long, 0, right_long], left_long
-        else:
-            return [left_long, 0, right_long], right_long
+    side = random.randint(1, 4)
+    return side

@@ -7,7 +7,10 @@ pygame.init()
 
 game = False
 control = 0
-cords = [0, 0, 3, 1, [0, 0, 0, 0], 1, 0]
+cords = [0, 0, 3, 0, [{'type': 0, 'start': 0},
+                   {'type': 0, 'start': 0},
+                   {'type': 0, 'start': 0},
+                   {'type': 0, 'start': 0}]]
 
 pygame.display.set_caption('Shroom Collector')
 screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
@@ -45,7 +48,7 @@ while run:
                     run = False
             menu.menu(screen, control)
     if game:
-        cords = play.move(screen, cords[0], cords[1], cords[2], cords[3], cords[4], cords[5], cords[6], control)
+        cords = play.move(screen, cords[0], cords[1], cords[2], cords[3], cords[4], control)
         if cords[2] == 0:
             game = play.lost(game)
     pygame.display.update()
