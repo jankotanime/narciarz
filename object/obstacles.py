@@ -14,9 +14,9 @@ def forest(screen, y, f_tab):
     else:
         screen.blit(grove, (0, f_tab['start'] - y))
         screen.blit(grove, (800, f_tab['start'] - y))
-        return -180, 180, f_tab['start'] - 80, f_tab['start'] + 720
+        return -180, 180, f_tab['start'] - 150, f_tab['start'] + 640
     screen.blit(grove, (x, f_tab['start'] - y))
-    return x-620, x-180, f_tab['start'] - 80, f_tab['start'] + 720
+    return x-620, x-180, f_tab['start'] - 150, f_tab['start'] + 640
 
 
 def death_function(x, y, mig):

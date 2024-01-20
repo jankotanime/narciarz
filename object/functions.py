@@ -40,9 +40,9 @@ def move(screen, x, y, n, score, objects, kier):
             death = obstacles.death_function(x, y, death_objects[i])
         else:
             death = obstacles.death_border_function(x, y, death_objects[i])
-    print(death)
 
-
+    if death == 1:
+        n = lost(n)
 
     if y + n >= 1800:
         return [x, 0, n, score, objects]
