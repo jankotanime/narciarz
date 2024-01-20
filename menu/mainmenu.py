@@ -1,5 +1,6 @@
 import pygame
 
+
 def menu(screen, n):
     menu = [pygame.image.load("../img/other/menu1.png"), pygame.image.load("../img/other/menu2.png"), pygame.image.load("../img/other/menu3.png"), pygame.image.load("../img/other/menu4.png")]
     if n==-1: n=3
@@ -8,6 +9,7 @@ def menu(screen, n):
         if i==n:
             screen.blit(menu[i], (0, 0))
     return n
+
 
 def how(screen):
     info = True
