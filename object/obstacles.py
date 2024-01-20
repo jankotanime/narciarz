@@ -3,6 +3,7 @@ import random
 
 grove = pygame.image.load("../img/objects/new_forest.png")
 pond = pygame.image.load("../img/objects/ice.png")
+skier = pygame.image.load("../img/objects/skier.png")
 
 
 def forest(screen, y, f_tab):
@@ -57,4 +58,25 @@ def ice(screen, y, f_tab):
     else:
         x = 800
     screen.blit(pond, (x, f_tab['start'] - y))
+    return x-620, x-180, f_tab['start'] - 150, f_tab['start'] + 640
+
+
+def randomise_skier(filled):
+    if filled == 4:
+        return 2
+    side = filled[0]['type']
+    while filled[0]['type'] != side and filled[1]['type']:
+        side = random.randint(1, 3)
+    placement = random.randint(1, 6)
+    return side, placement
+
+
+def ski(screen, y, f_tab):
+    if f_tab['type'][0] == 1:
+        x = f_tab['type'][1]*6
+    elif f_tab['type'][0] == 2:
+        x = 400+f_tab['type'][1]*60
+    else:
+        x = 800+f_tab['type'][1]*60
+    screen.blit(skier, (x, f_tab['start'] + 600 - y/2))
     return x-620, x-180, f_tab['start'] - 150, f_tab['start'] + 640

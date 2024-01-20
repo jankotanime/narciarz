@@ -1,3 +1,5 @@
+import random
+
 import pygame
 import object.obstacles as obstacles
 
@@ -27,17 +29,15 @@ def move(screen, x, y, n, score, objects, kier):
         objects[0]['type'] = obstacles.randomise_forest()
         objects[0]['start'] = 900
         objects[1]['start'] = 0
-    if y == 450:
-        objects[3]['type'] = obstacles.randomise_forest()
-        objects[3]['start'] = 1800
+        objects[2]['type'] = obstacles.randomise_ice(objects[0])
+        objects[2]['start'] = 600
+        objects[4]['type'] = obstacles.randomise_skier((objects[0], objects[2]))
+        objects[4]['start'] = random.randint(0, 100)
     if y == 900:
         objects[1]['type'] = obstacles.randomise_forest()
         objects[1]['start'] = 1800
-        objects[2]['type'] = obstacles.randomise_ice(objects[0])
-        objects[2]['start'] = 600
-    if y == 1350:
-        objects[4]['type'] = obstacles.randomise_forest()
-        objects[4]['start'] = 1800
+        objects[3]['type'] = obstacles.randomise_ice(objects[0])
+        objects[3]['start'] = 1500
     death = obstacles.forest(screen, y, objects[0])
     death_objects.append({'x1': death[0], 'x2': death[1], 'y1': death[2], 'y2': death[3]})
     death = obstacles.forest(screen, y, objects[1])
@@ -45,6 +45,10 @@ def move(screen, x, y, n, score, objects, kier):
 
     ice = obstacles.ice(screen, y, objects[2])
     ice_objects.append({'x1': ice[0], 'x2': ice[1], 'y1': ice[2], 'y2': ice[3]})
+    ice = obstacles.ice(screen, y, objects[3])
+    ice_objects.append({'x1': ice[0], 'x2': ice[1], 'y1': ice[2], 'y2': ice[3]})
+
+    skier = obstacles.ski(screen, y, objects[4])
 
     death = obstacles.death_border_function(x, y, death_zone)
 
@@ -56,7 +60,7 @@ def move(screen, x, y, n, score, objects, kier):
         else:
             death = obstacles.death_border_function(x, y, death_objects[i])
 
-    for i in range(0, len(ice_objects)):
+    for i in range(len(ice_objects)):
         if ice == 1:
             break
         ice = obstacles.ice_function(x, y, ice_objects[i])
