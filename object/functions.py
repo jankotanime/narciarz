@@ -92,4 +92,4 @@ def move(screen, x, y, n, score, objects, kier):
 
 
 def lost(game):
-    return 0
+    return 1
