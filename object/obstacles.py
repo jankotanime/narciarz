@@ -43,7 +43,6 @@ def randomise_forest():
 
 def randomise_ice(filled):
     if filled['type'] == 4:
-        print('x')
         return 2
     if filled['type'] == 1:
         return random.randint(2, 3)

@@ -82,14 +82,10 @@ def move(screen, x, y, n, score, objects, kier):
         ice = 0
 
     if death == 1:
-        n = lost(n)
+        n = 0
 
     player_chart(screen, x)
 
     if y + n >= 1800:
-        return [x, 0, n, score, objects, ice]
-    return [x, y + n, n, score, objects, ice]
-
-
-def lost(game):
-    return 1
+        return [x, 0, n, score + 1, objects, ice]
+    return [x, y + n, n, score + 1, objects, ice]
