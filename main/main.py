@@ -11,6 +11,7 @@ cords = [0, 0, 3, 0, [{'type': 1, 'start': 900},
                    {'type': 3, 'start': 1800},
                    {'type': 0, 'start': 0},
                    {'type': 0, 'start': 0}], 0]
+score = 0
 
 pygame.display.set_caption('Shroom Collector')
 screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
@@ -42,11 +43,12 @@ while run:
                 if control == 0:
                     cords = [0, 0, 3, 0, [{'type': 1, 'start': 900},
                                           {'type': 3, 'start': 1800},
-                                          {'type': 0, 'start': 3000},
-                                          {'type': 0, 'start': 3000},
-                                          {'type': 0, 'start': 3000},
-                                          {'type': 0, 'start': 0},
+                                          {'type': 2, 'start': 3000},
+                                          {'type': 1, 'start': 3000},
+                                          {'type': [0, 3], 'start': 3000},
+                                          {'type': [1, 3], 'start': 0},
                                           {'type': 0, 'start': 0}]]
+                    score = 0
                     game = True
                 elif control == 1:
                     menu.how(screen)
