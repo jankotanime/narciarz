@@ -1,12 +1,7 @@
-import pygame
 import random
 
-grove = pygame.image.load("../img/objects/new_forest.png")
-pond = pygame.image.load("../img/objects/ice.png")
-skier = pygame.image.load("../img/objects/skier.png")
 
-
-def forest(screen, y, f_tab):
+def forest(screen, y, f_tab, grove):
     if f_tab['type'] == 1:
         x = 0
     elif f_tab['type'] == 2:
@@ -16,9 +11,9 @@ def forest(screen, y, f_tab):
     else:
         screen.blit(grove, (0, f_tab['start'] - y))
         screen.blit(grove, (800, f_tab['start'] - y))
-        return -180, 180, f_tab['start'] - 150, f_tab['start'] + 640
+        return -200, 180, f_tab['start'] - 100, f_tab['start'] + 600
     screen.blit(grove, (x, f_tab['start'] - y))
-    return x - 620, x - 180, f_tab['start'] - 150, f_tab['start'] + 640
+    return x - 630, x - 150, f_tab['start'] - 100, f_tab['start'] + 600
 
 
 def death_function(x, y, mig):
@@ -55,7 +50,7 @@ def randomise_ice(filled):
         return 3
 
 
-def ice(screen, y, f_tab):
+def ice(screen, y, f_tab, pond):
     if f_tab['type'] == 1:
         x = 0
     elif f_tab['type'] == 2:
@@ -63,28 +58,28 @@ def ice(screen, y, f_tab):
     else:
         x = 800
     screen.blit(pond, (x, f_tab['start'] - y))
-    return x - 620, x - 180, f_tab['start'] - 150, f_tab['start'] + 180
+    return x - 620, x - 220, f_tab['start'] - 150, f_tab['start'] + 160
 
 
 def randomise_skier(filled):
     if filled['type'] == 4:
-        return 2, random.randint(1, 4)
+        return 2, random.randint(0, 5)
     side = filled['type']
     while side == filled['type']:
         side = random.randint(1, 3)
-    placement = random.randint(1, 4)
+    placement = random.randint(0, 5)
     return side, placement
 
 
-def ski(screen, y, f_tab):
+def ski(screen, y, f_tab, skier):
     if f_tab['type'][0] == 1:
-        x = 0 + f_tab['type'][1] * 60
+        x = 150 + f_tab['type'][1] * 32
     elif f_tab['type'][0] == 2:
-        x = 400 + f_tab['type'][1] * 60
+        x = 400 + f_tab['type'][1] * 80
     else:
-        x = 800 + f_tab['type'][1] * 60
+        x = 800 + f_tab['type'][1] * 32
     screen.blit(skier, (x, f_tab['start'] - y * 0.8))
-    return x - 610, x - 520, f_tab['start']-120, f_tab['start']
+    return x - 610, x - 520, f_tab['start']-140, f_tab['start']-20
 
 
 def conflict(x, y, mig):

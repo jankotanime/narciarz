@@ -1,10 +1,16 @@
 import random
-
 import pygame
 import object.obstacles as obstacles
 
 main_map = pygame.image.load("../img/objects/map.png")
-player = pygame.image.load("../img/objects/player.png")
+player = pygame.image.load("../img/objects/better_player.png")
+player_left = pygame.image.load("../img/objects/better_player-left.png")
+player_right = pygame.image.load("../img/objects/better_player-rigth.png")
+grove = pygame.image.load("../img/objects/new_forest.png")
+double_grove = pygame.image.load("../img/objects/double_forest.png")
+pond = pygame.image.load("../img/objects/ice.png")
+skier_img = pygame.image.load("../img/objects/skier.png")
+death_img = pygame.image.load("../img/objects/death_img.png")
 
 
 def chart(screen, y):
@@ -12,12 +18,17 @@ def chart(screen, y):
     screen.blit(main_map, (0, 1800 - y))
 
 
-def player_chart(screen, x):
-    screen.blit(player, (570 + x, 80))
+def player_chart(screen, x, kier):
+    if kier == 0:
+        screen.blit(player, (570 + x, 80))
+    elif kier == 1:
+        screen.blit(player_left, (570 + x, 80))
+    else:
+        screen.blit(player_right, (570 + x, 80))
 
 
 def move(screen, x, y, n, score, objects, kier):
-    death_zone = {'x1': -465, 'x2': 465, 'y1': 0, 'y2': 1800}
+    death_zone = {'x1': -435, 'x2': 415, 'y1': 0, 'y2': 1800}
     death_objects = []
     ice_objects = []
     skiers = []
@@ -43,19 +54,19 @@ def move(screen, x, y, n, score, objects, kier):
         objects[5]['type'] = obstacles.randomise_skier((objects[1]))
         objects[5]['start'] = 2400
 
-    ice = obstacles.ice(screen, y, objects[2])
+    ice = obstacles.ice(screen, y, objects[2], pond)
     ice_objects.append({'x1': ice[0], 'x2': ice[1], 'y1': ice[2], 'y2': ice[3]})
-    ice = obstacles.ice(screen, y, objects[3])
+    ice = obstacles.ice(screen, y, objects[3], pond)
     ice_objects.append({'x1': ice[0], 'x2': ice[1], 'y1': ice[2], 'y2': ice[3]})
 
-    death = obstacles.forest(screen, y, objects[0])
+    death = obstacles.forest(screen, y, objects[0], grove)
     death_objects.append({'x1': death[0], 'x2': death[1], 'y1': death[2], 'y2': death[3]})
-    death = obstacles.forest(screen, y, objects[1])
+    death = obstacles.forest(screen, y, objects[1], grove)
     death_objects.append({'x1': death[0], 'x2': death[1], 'y1': death[2], 'y2': death[3]})
 
-    skier = obstacles.ski(screen, y, objects[4])
+    skier = obstacles.ski(screen, y, objects[4], skier_img)
     skiers.append({'x1': skier[0], 'x2': skier[1], 'y1': skier[2], 'y2': skier[3]})
-    skier = obstacles.ski(screen, y, objects[5])
+    skier = obstacles.ski(screen, y, objects[5], skier_img)
     skiers.append({'x1': skier[0], 'x2': skier[1], 'y1': skier[2], 'y2': skier[3]})
 
     death = obstacles.death_border_function(x, y, death_zone)
@@ -84,8 +95,12 @@ def move(screen, x, y, n, score, objects, kier):
     if death == 1:
         n = 0
 
-    player_chart(screen, x)
+    player_chart(screen, x, kier)
 
     if y + n >= 1800:
         return [x, 0, n, score + 1, objects, ice]
     return [x, y + n, n, score + 1, objects, ice]
+
+
+def death_moment(screen, x, y):
+    screen.blit(death_img, (540 + x, 40))

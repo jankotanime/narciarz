@@ -12,6 +12,8 @@ def name(nick, key):
         nick.append("0")
     if key[pygame.K_SPACE]:
         nick.append(" ")
+    if key[pygame.K_BACKSPACE] and len(nick) > 0:
+        del nick[len(nick) - 1]
     return nick
 
 
