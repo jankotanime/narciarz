@@ -60,11 +60,22 @@ def lost(screen, score, name):
 
 
 def top(screen):
-    screen.blit(best_players, (0, 0))
-    font = pygame.font.Font('../img/other/Lato-Black.ttf', 64)
-    with open('../menu/players', 'r') as file:
-        players = file.readlines()
-        text = font.render(str(players), True, (0, 0, 0), (100, 100, 100))
-        screen.blit(text, (500, 500))
-
-
+    info = True
+    while info:
+        key = pygame.key.get_pressed()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
+                info = False
+        screen.blit(best_players, (0, 0))
+        font = pygame.font.Font('../img/other/Lato-Black.ttf', 32)
+        with open('../menu/players', 'r') as file:
+            players = [line.strip() for line in file.readlines()]
+            for i in range(len(players)):
+                text = font.render(players[i], True, (0, 0, 0), (100, 100, 100))
+                screen.blit(text, (250, 150 + i*80))
+        with open('../menu/bests', 'r') as file:
+            players = [line.strip() for line in file.readlines()]
+            for i in range(len(players)):
+                text = font.render(players[i], True, (0, 0, 0), (100, 100, 100))
+                screen.blit(text, (500, 150 + i*80))
+        pygame.display.update()

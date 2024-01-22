@@ -1,8 +1,5 @@
 import pygame
 
-dictionary = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-              'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'w', 'x', 'y', 'z')
-
 
 def name(nick):
     key = pygame.key.get_pressed()
@@ -56,7 +53,6 @@ def score_search(hight, low, values, score):
             for i in range(len(values)):
                 new_tab.append(values[i])
             new_tab.append(score)
-            return new_tab
     else:
         for i in range(len(values) - 1):
             if values[i] > score:
@@ -81,11 +77,9 @@ def name_overwrite(x, new_name):
             file.write(players[i])
         file.write(new_name)
         file.write("\n")
-        if len(players) != 4:
+        if len(players) != 5:
             for i in range(x, len(players)):
                 file.write(players[i])
         else:
             for i in range(x, 4):
                 file.write(players[i])
-
-

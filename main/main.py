@@ -4,7 +4,7 @@ import menu.mainmenu as menu
 import static
 import menu.ranking as ranking
 
-NoName = ('N','o','N','a','m','e')
+NoName = ('N', 'o', "N", 'a', 'm', 'e')
 
 pygame.init()
 
@@ -59,7 +59,6 @@ while run:
                 lost = False
                 control = 0
                 control = menu.menu(screen, control)
-
         else:
             if key[pygame.K_DOWN]:
                 control += 1
