@@ -4,7 +4,7 @@ import menu.mainmenu as menu
 import static
 import menu.ranking as ranking
 
-NoName = ('N', 'o', "N", 'a', 'm', 'e')
+NoName = ('N', 'o', 'N', 'a', 'm', 'e')
 
 pygame.init()
 
@@ -43,11 +43,9 @@ while run:
                 elif key[pygame.K_DOWN]:
                     control = 0
         elif lost:
-            if lost_change == 1:
-                name = menu.lost(screen, cords[3], name)
-                lost_change = 0
-            else:
-                lost_change = 1
+            name = menu.lost(screen, cords[3], name, key)
+            ranking.show_nick(screen, name)
+            pygame.display.update()
             if key[pygame.K_BACKSPACE] and len(name) > 0:
                 del name[len(name) - 1]
             if key[pygame.K_RETURN]:
@@ -90,7 +88,7 @@ while run:
             control = 0
             lost = True
             game = False
-            menu.lost(screen, cords[3], name)
+            menu.lost(screen, cords[3], name, key)
         else:
             cords = play.move(screen, cords[0], cords[1], cords[2], cords[3], cords[4], control)
     pygame.display.update()
