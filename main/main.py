@@ -29,7 +29,7 @@ screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
 run = True
 while run:
     clock = pygame.time.Clock()
-    clock.tick(600)
+    clock.tick(120)
     key = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
@@ -50,7 +50,7 @@ while run:
                 change_ranking = ranking.rank_check(cords[3])
                 if change_ranking:
                     if not name:
-                        name = NoName
+                        name = "NoName"
                     ranking.name_overwrite(change_ranking - 1, "".join(map(str, name)))
                 lost = False
                 control = 0
