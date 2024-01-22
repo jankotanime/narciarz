@@ -29,7 +29,7 @@ screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
 run = True
 while run:
     clock = pygame.time.Clock()
-    clock.tick(90)
+    clock.tick(600)
     key = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:

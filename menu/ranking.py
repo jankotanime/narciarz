@@ -20,8 +20,8 @@ def name(nick, key):
 def show_nick(screen, nick):
     font = pygame.font.Font('../img/other/Lato-Black.ttf', 64)
     nickname = "".join(map(str, nick))
-    text = font.render(nickname, True, (0, 0, 0), (100, 100, 100))
-    screen.blit(text, (500, 500))
+    text = font.render(nickname, True, (139, 139, 139), (50, 68, 81))
+    screen.blit(text, (200, 450))
 
 
 def rank_check(score):

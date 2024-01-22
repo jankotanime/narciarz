@@ -11,9 +11,9 @@ def forest(screen, y, f_tab, grove):
     else:
         screen.blit(grove, (0, f_tab['start'] - y))
         screen.blit(grove, (800, f_tab['start'] - y))
-        return -200, 180, f_tab['start'] - 100, f_tab['start'] + 600
+        return -200, 180, f_tab['start'] - 80, f_tab['start'] + 600
     screen.blit(grove, (x, f_tab['start'] - y))
-    return x - 630, x - 150, f_tab['start'] - 100, f_tab['start'] + 600
+    return x - 610, x - 210, f_tab['start'] - 80, f_tab['start'] + 600
 
 
 def death_function(x, y, mig):
@@ -58,7 +58,7 @@ def ice(screen, y, f_tab, pond):
     else:
         x = 800
     screen.blit(pond, (x, f_tab['start'] - y))
-    return x - 620, x - 220, f_tab['start'] - 150, f_tab['start'] + 160
+    return x - 620, x - 240, f_tab['start'] - 150, f_tab['start'] + 160
 
 
 def randomise_skier(filled):
@@ -77,7 +77,7 @@ def ski(screen, y, f_tab, skier):
     elif f_tab['type'][0] == 2:
         x = 400 + f_tab['type'][1] * 80
     else:
-        x = 800 + f_tab['type'][1] * 32
+        x = 800 + f_tab['type'][1] * 20
     screen.blit(skier, (x, f_tab['start'] - y * 0.8))
     return x - 610, x - 520, f_tab['start']-140, f_tab['start']-20
 

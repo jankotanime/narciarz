@@ -50,8 +50,8 @@ def lost(screen, score, name, key):
     screen.blit(lost_img, (0, 0))
     font = pygame.font.Font('../img/other/Lato-Black.ttf', 64)
     score = str(score)
-    text = font.render(score, True, (0, 0, 0), (100, 100, 100))
-    screen.blit(text, (500, 250))
+    text = font.render(score, True, (139, 139, 139), (50, 68, 81))
+    screen.blit(text, (500, 300))
     return ranking.name(name, key)
 
 
@@ -63,15 +63,15 @@ def top(screen):
             if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
                 info = False
         screen.blit(best_players, (0, 0))
-        font = pygame.font.Font('../img/other/Lato-Black.ttf', 32)
+        font = pygame.font.Font('../img/other/Lato-Black.ttf', 60)
         with open('../menu/players', 'r') as file:
             players = [line.strip() for line in file.readlines()]
             for i in range(len(players)):
-                text = font.render(players[i], True, (0, 0, 0), (100, 100, 100))
-                screen.blit(text, (250, 150 + i*80))
+                text = font.render(players[i], True, (139, 139, 139), (50, 68, 81))
+                screen.blit(text, (250, 185 + i*62))
         with open('../menu/bests', 'r') as file:
             players = [line.strip() for line in file.readlines()]
             for i in range(len(players)):
-                text = font.render(players[i], True, (0, 0, 0), (100, 100, 100))
-                screen.blit(text, (500, 150 + i*80))
+                text = font.render(players[i], True, (139, 139, 139), (50, 68, 81))
+                screen.blit(text, (800, 185 + i*62))
         pygame.display.update()
