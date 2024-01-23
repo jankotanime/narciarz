@@ -27,7 +27,6 @@ def show_nick(screen, nick):
 def rank_check(score):
     with open('../menu/bests', 'r') as file:
         values = [int(line.strip()) for line in file]
-    print(values)
     if values:
         new_tab = score_search(values[0], values[len(values)-1], values, score)
     else:
