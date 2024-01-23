@@ -32,16 +32,16 @@ def player_chart(screen, x, kier):
         screen.blit(player_right, (570 + x, 80))
 
 
-def move(screen, x, y, n, score, objects, kier):
+def move(screen, x, y, speed, score, objects, kier):
     death_zone = {'x1': -435, 'x2': 415, 'y1': 0, 'y2': 1800}
     death_objects = []
     ice_objects = []
     skiers = []
-    chart(screen, y + n)
+    chart(screen, y + speed)
     if kier == 1:
-        x -= n
+        x -= speed
     elif kier == 2:
-        x += n
+        x += speed
     if y == 0:
         objects[0]['type'] = obstacles.randomise_forest()
         objects[0]['start'] = 900
@@ -100,11 +100,11 @@ def move(screen, x, y, n, score, objects, kier):
         ice = 0
 
     if death == 1:
-        n = 0
+        speed = 0
 
-    if y + n >= 1800:
-        return [x, 0, n, score + 1, objects, ice]
-    return [x, y + n, n, score + 1, objects, ice]
+    if y + speed >= 1800:
+        return [x, 0, speed, score + 1, objects, ice]
+    return [x, y + speed, speed, score + 1, objects, ice]
 
 
 def death_moment(screen, x, y):
