@@ -16,7 +16,7 @@ name = []
 
 lost_change = 0
 
-cords = [0, 0, 3, 0, [{'type': 1, 'start': 900},
+cords = [0, 0, 15, 0, [{'type': 1, 'start': 900},
                       {'type': 3, 'start': 1800},
                       {'type': 2, 'start': 3000},
                       {'type': 1, 'start': 3000},

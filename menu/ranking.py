@@ -27,6 +27,7 @@ def show_nick(screen, nick):
 def rank_check(score):
     with open('../menu/bests', 'r') as file:
         values = [int(line.strip()) for line in file]
+    print(values)
     if values:
         new_tab = score_search(values[0], values[len(values)-1], values, score)
     else:
@@ -62,17 +63,17 @@ def score_search(hight, low, values, score):
                 new_tab.append(values[i])
             new_tab.append(score)
     else:
-        for i in range(len(values) - 1):
+        for i in range(len(values)):
             if values[i] > score:
                 new_tab.append(values[i])
             else:
                 new_tab.append(score)
                 break
         if len(values) != 5:
-            for i in range(len(new_tab) - 1, len(values)):
+            for i in range(len(new_tab)-1, len(values)):
                 new_tab.append(values[i])
         else:
-            for i in range(len(new_tab) - 1, 4):
+            for i in range(len(new_tab)-1, 4):
                 new_tab.append(values[i])
     return new_tab
 
