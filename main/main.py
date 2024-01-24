@@ -14,8 +14,6 @@ control = 0
 
 name = []
 
-lost_change = 0
-
 cords = [0, 0, 15, 0, [{'type': 1, 'start': 900},
                       {'type': 3, 'start': 1800},
                       {'type': 2, 'start': 3000},
@@ -29,7 +27,7 @@ screen = pygame.display.set_mode((static.SCR_WITDH, static.SCR_HEIGT))
 run = True
 while run:
     clock = pygame.time.Clock()
-    clock.tick(720)
+    clock.tick(60)
     key = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
@@ -65,7 +63,6 @@ while run:
             elif key[pygame.K_SPACE]:
                 if control == 0:
                     name = []
-                    lost_change = 0
                     cords = [0, 0, 15, 0, [{'type': 1, 'start': 900},
                                            {'type': 3, 'start': 1800},
                                            {'type': 2, 'start': 3000},
