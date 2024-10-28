@@ -3,11 +3,11 @@
 
 ---
 
-**Narciarz** is pygame-based game for single player, where objective is to make the longest slide. This project is my first significant Python project, developed as part of my studies to fulfill a requirement in my first-semester course and I received the maximum score for it. Through this project I aimed to deepen of Python and gain practial experience with programing concepts.
+**Narciarz** is pygame-based game for single player, where objective is to achieve the longest slide. This project is my first significant Python project, developed as part of my studies to fulfill a requirement in my first-semester course, and I received the maximum score for it. Through this project I aimed to deepen of Python and gain practial experience with programing concepts.
 
 ## Requirements
 - Python 3.8+
-- Libraries: os, keyboard, random
+- Libraries: pygame, random, pytest (for tests)
 
 ## How To Play
 ### Controls:
@@ -15,19 +15,20 @@
 - Menu: 
     - Navigate: arrow keys (up and down)
     - Deciding: space or enter
+    - Exit: esc
+- How to play on menu:
+    - Navigate: arrow keys (left and right)
+    - Exit: esc
 - Game:
-    - Betting: arrow keys (up and down)
-    - Navigate through the dices: arrow keys (left and right)
-    - Choosing a dice to throw: space
-    - Throwing: enter
-    - Passing: q
-    - Va banque: v
+    - Slide straight, left and right: arrow keys (down, left and right, respectively)
+    - Exit: esc
 
 ### Rules
-The goal is to amass the biggest amount of money but mostly is to not losing them. Every player has 3 turns to roll any of their dice. If a player has less money than previous bet, they must either raise the stakes or pass, losing all their current round bets. 
+The goal is to score the highest number of points by sliding down the map. Player loses by collide with any object (npc or tree) and if they are on ice, as they cannot change direction.
 
 ## Game Features
-- Full Game Flow: Possible constant game, not only ties. Players can remain their money.
-- AI Bots: Bots with complex decision-making processes. They calculate their chances of winning based on remaining money and game conditions.
-- Betting: Players can call, raise the stakes, pass or play Va banque.
-- Console Graphics: The game uses terminal-based graphics and objects to display the current state of the game each round. Not library used.
+- No end: The game is unlimited, making it chillful and fun to compare with others.
+- Dynamic maps: Every game map is different as it is constantly generated randomly.
+- Obstacles: The game includes 4 types of obstacles that can disturb the player.
+- Ranking System: After losing, the player has the option to enter their name, and their score will be compared with others on the same device. The ranking can hold a maximum of 5 players at a time.
+- Graphics: The graphic models are created by me.
