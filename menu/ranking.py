@@ -18,14 +18,14 @@ def name(nick, key):
 
 
 def show_nick(screen, nick):
-    font = pygame.font.Font('../img/other/Lato-Black.ttf', 64)
+    font = pygame.font.Font('img/other/Lato-Black.ttf', 64)
     nickname = "".join(map(str, nick))
     text = font.render(nickname, True, (139, 139, 139), (50, 68, 81))
     screen.blit(text, (200, 450))
 
 
 def rank_check(score):
-    with open('../menu/bests', 'r') as file:
+    with open('menu/bests', 'r') as file:
         values = [int(line.strip()) for line in file]
     if values:
         new_tab = score_search(values[0], values[len(values)-1], values, score)
@@ -35,7 +35,7 @@ def rank_check(score):
         return False
     else:
         x = 0
-        with open('../menu/bests', 'w') as file:
+        with open('menu/bests', 'w') as file:
             for i in range(len(new_tab)):
                 file.write(str(new_tab[i]))
                 file.write('\n')
@@ -78,9 +78,9 @@ def score_search(hight, low, values, score):
 
 
 def name_overwrite(x, new_name):
-    with open('../menu/players', 'r') as file:
+    with open('menu/players', 'r') as file:
         players = file.readlines()
-    with open('../menu/players', 'w') as file:
+    with open('menu/players', 'w') as file:
         for i in range(x):
             file.write(players[i])
         file.write(new_name)

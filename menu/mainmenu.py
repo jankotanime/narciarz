@@ -1,12 +1,12 @@
 import pygame
 import menu.ranking as ranking
 
-best_players = pygame.image.load("../img/other/top_players.png")
+best_players = pygame.image.load("img/other/top_players.png")
 
 
 def menu(screen, n):
-    menu_img = [pygame.image.load("../img/other/menu1.png"), pygame.image.load("../img/other/menu2.png"),
-                pygame.image.load("../img/other/menu3.png"), pygame.image.load("../img/other/menu4.png")]
+    menu_img = [pygame.image.load("img/other/menu1.png"), pygame.image.load("img/other/menu2.png"),
+                pygame.image.load("img/other/menu3.png"), pygame.image.load("img/other/menu4.png")]
     if n == -1:
         n = 3
     if n == 4:
@@ -33,9 +33,9 @@ def how(screen):
                 n -= 1
                 if n == 0:
                     n = 3
-        instr = pygame.image.load("../img/other/instructions.png")
-        contr = pygame.image.load("../img/other/controllers.png")
-        obj = pygame.image.load("../img/other/objects.png")
+        instr = pygame.image.load("img/other/instructions.png")
+        contr = pygame.image.load("img/other/controllers.png")
+        obj = pygame.image.load("img/other/objects.png")
         if n == 1:
             screen.blit(instr, (0, 0))
         elif n == 2:
@@ -46,9 +46,9 @@ def how(screen):
 
 
 def lost(screen, score, name, key):
-    lost_img = pygame.image.load("../img/other/lost.png")
+    lost_img = pygame.image.load("img/other/lost.png")
     screen.blit(lost_img, (0, 0))
-    font = pygame.font.Font('../img/other/Lato-Black.ttf', 64)
+    font = pygame.font.Font('img/other/Lato-Black.ttf', 64)
     score = str(score)
     text = font.render(score, True, (139, 139, 139), (50, 68, 81))
     screen.blit(text, (500, 300))
@@ -63,13 +63,13 @@ def top(screen):
             if event.type == pygame.QUIT or key[pygame.K_ESCAPE]:
                 info = False
         screen.blit(best_players, (0, 0))
-        font = pygame.font.Font('../img/other/Lato-Black.ttf', 60)
-        with open('../menu/players', 'r') as file:
+        font = pygame.font.Font('img/other/Lato-Black.ttf', 60)
+        with open('menu/players', 'r') as file:
             players = [line.strip() for line in file.readlines()]
             for i in range(len(players)):
                 text = font.render(players[i], True, (139, 139, 139), (50, 68, 81))
                 screen.blit(text, (250, 185 + i*62))
-        with open('../menu/bests', 'r') as file:
+        with open('menu/bests', 'r') as file:
             players = [line.strip() for line in file.readlines()]
             for i in range(len(players)):
                 text = font.render(players[i], True, (139, 139, 139), (50, 68, 81))

@@ -2,15 +2,15 @@ import random
 import pygame
 import object.obstacles as obstacles
 
-main_map = pygame.image.load("../img/objects/map.png")
-player = pygame.image.load("../img/objects/better_player.png")
-player_left = pygame.image.load("../img/objects/better_player-left.png")
-player_right = pygame.image.load("../img/objects/better_player-rigth.png")
-grove = pygame.image.load("../img/objects/new_forest.png")
-pond = pygame.image.load("../img/objects/ice.png")
-skier_img = pygame.image.load("../img/objects/skier.png")
-death_img = pygame.image.load("../img/objects/death_img.png")
-forest_border = pygame.image.load("../img/objects/forest_border.png")
+main_map = pygame.image.load("img/objects/map.png")
+player = pygame.image.load("img/objects/better_player.png")
+player_left = pygame.image.load("img/objects/better_player-left.png")
+player_right = pygame.image.load("img/objects/better_player-rigth.png")
+grove = pygame.image.load("img/objects/new_forest.png")
+pond = pygame.image.load("img/objects/ice.png")
+skier_img = pygame.image.load("img/objects/skier.png")
+death_img = pygame.image.load("img/objects/death_img.png")
+forest_border = pygame.image.load("img/objects/forest_border.png")
 
 
 def chart(screen, y):
